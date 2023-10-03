@@ -9,7 +9,7 @@ class Server {
         this.port  = process.env.PORT || 3000;
         this.usuariosPath = '/api/usuarios';
 
-        // Conectar a base de datos
+        // * Conectar a base de datos
         this.conectarDB();
 
         // * Middlewares = Son Funciones que añaden otra accion al Web Servers

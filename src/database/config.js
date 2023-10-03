@@ -11,5 +11,6 @@ const dbConnection = async () => {
         throw new Error('Error a la hora de iniciar la Base de datos');
     }
 }
+mongoose.set('strictQuery', false);
 
 module.exports = dbConnection
