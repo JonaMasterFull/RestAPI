@@ -4,6 +4,8 @@ const usuariosGet =  (req = request, res = response) => {
 
     const { query, nombre = '', params, page = 1, limit = 10 } = req.query;
 
+    req.body
+
     res.json({
         msg: 'Get Api - Controlador',
         query,

@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const dbConnection = require('../database/config');
 
 class Server {
     constructor(){
@@ -8,11 +9,18 @@ class Server {
         this.port  = process.env.PORT || 3000;
         this.usuariosPath = '/api/usuarios';
 
+        // Conectar a base de datos
+        this.conectarDB();
+
         // * Middlewares = Son Funciones que añaden otra accion al Web Servers
         this.middlewares();
 
         // * Rutas de mi Aplicacion
         this.routes();
+    }
+
+    async conectarDB(){
+        await dbConnection()
     }
 
     // ? Son nuestras Funciones que se ejecutan al instante
@@ -25,7 +33,7 @@ class Server {
         this.app.use( express.json());
 
         // Directorio Publico del Frontend al momento de Publicarlo
-        this.app.use( express.static('public'));
+        this.app.use( express.static('../public/index.html'));
         
     }
 
