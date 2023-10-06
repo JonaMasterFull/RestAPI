@@ -20,6 +20,11 @@ const usuarioPost = async (req, res) => {
     const usuario = new Usuario({ nombre, correo, password, rol });
 
     // Verificar que el correo existe
+    const existeEmail = await Usuario.findOne({ correo })
+
+    if ( existeEmail ){
+      return res.status(400).json({ msg: 'Correo ya existe' });
+    }
 
     // Encriptar la contraseña
       // Genera el numero de caracteres Salt
